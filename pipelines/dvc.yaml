@@ -1,0 +1,31 @@
+stages:
+  ingest:
+    cmd: python -m banamex_one_mna.ingestion
+    deps:
+      - src/banamex_one_mna/ingestion
+    params:
+      - ingest
+    outs:
+      - data/processed
+
+  build_index:
+    cmd: python -m banamex_one_mna.retrieval
+    deps:
+      - src/banamex_one_mna/retrieval
+      - data/processed
+    params:
+      - retrieval
+    outs:
+      - data/index
+
+  evaluate:
+    cmd: python -m evals.run
+    deps:
+      - src/banamex_one_mna
+      - data/index
+      - evals
+    params:
+      - eval
+    metrics:
+      - evals/metrics.json:
+          cache: false

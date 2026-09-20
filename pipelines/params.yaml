@@ -1,0 +1,12 @@
+ingest:
+  pii_redaction: true
+  normalize_whitespace: true
+
+retrieval:
+  chunk_size: 800
+  chunk_overlap: 100
+  embedding_model: ""
+
+eval:
+  golden_set: evals/golden_set.jsonl
+  threshold_pass_rate: 0.9

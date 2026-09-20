@@ -1,0 +1,11 @@
+model:
+  provider: anthropic
+  name: ""
+  temperature: 0.0
+
+thresholds:
+  eval_pass_rate: 0.95
+
+paths:
+  data_dir: data/
+  index_dir: data/index/
